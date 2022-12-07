@@ -1,6 +1,9 @@
 name: Actions Workflow
 
-on: [push, pull_request]
+on:
+  push:
+  pull_request:
+    type: ['opened, closed, assigned, reopened']
 
 jobs:
   run-workflow-actions:

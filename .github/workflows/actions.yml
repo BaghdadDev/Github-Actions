@@ -1,14 +1,24 @@
 name: Actions Workflow
 
 on:
-  repository_dispatch:
-    types: [build]
+  push:
+    branches: # We have also "branches-ignore"
+      - master
+      - 'features/*' # matches features/featA, features/featB => This is a pattern
+      - '!features/featC' # This will exclude feature C
+    tags:
+      - v1
+    paths:
+      - '**.js' # When any js file will be changed
+      - '!filename.js' # Will be ignored
+  # repository_dispatch:
+  #   types: [build]
   # schedule:
   #   - cron: "0/5 * * * *"
   #   - cron: "0/6 * * * *"
   # push:
-  pull_request:
-    types: ["opened", "closed", "assigned", "reopened"]
+  # pull_request:
+    # types: ["opened", "closed", "assigned", "reopened"]
 
 jobs:
   run-workflow-actions:

@@ -14,6 +14,8 @@ jobs:
   run-workflow-actions:
     runs-on: ubuntu-latest
     steps:
+      - name: Display Client Payload from Reqeust Dispatch
+        run: echo "{{ github.event.client_payload.Baghdad }}"
       - name: List Files
         run: |
           pwd
